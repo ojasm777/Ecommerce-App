@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+.dropdownToggle {
+  color: rgb(0, 0, 0, 0.55);
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  box-shadow: none !important;
+  gap: 2px;
+}
+a:hover {
+  color: rgb(0, 0, 0, 0.55);
+}
+
+.dropDownProfile::before {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  content: "";
+  left: 88px;
+  top: -10.7px;
+  transform: rotate(45deg);
+  border-left: 0.5px solid rgb(0, 0, 0, 0.55);
+  border-top: 0.5px solid rgb(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.dropDownProfile {
+  z-index: 1;
+  padding: 5px;
+  position: absolute;
+  border: 0.5px solid rgb(0, 0, 0, 0.55);
+  border-radius: 10px;
+  text-transform: none;
+  /* width: 100px; */
+  background-color: white;
+  margin-top: 10px;
+  right: 8px;
+}
+ul {
+  list-style: none;
+  text-decoration: none;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* text-align: ; */
+}
+
+ul.this {
+  gap: 5px;
+}
+.dropDownProfile li {
+  position: relative;
+  width: 100%;
+  left: -30px;
+  /* border : 2px solid pink; */
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0, 0.55);
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+li > a:hover {
+  color: rgb(0, 0, 0, 1);
+}

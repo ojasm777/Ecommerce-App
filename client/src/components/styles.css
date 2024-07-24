@@ -1,0 +1,61 @@
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  border: none;
+  background-color: transparent;
+  color: rgb(0, 0, 0, 0.55);
+  box-shadow: none !important;
+  gap: 2px;
+}
+
+.dropdown::before {
+  color: rgb(0, 0, 0, 0.55);
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  content: "";
+  left: 108px;
+  top: -9.7px;
+  transform: rotate(45deg);
+  border-left: 0.5px solid rgb(0, 0, 0, 0.55);
+  border-top: 0.5px solid rgb(0, 0, 0, 0.55);
+}
+
+.parent {
+  position: relative;
+}
+.dropdown {
+  padding: 5px;
+  position: absolute;
+  border: 0.5px solid rgb(0, 0, 0, 0.55);
+  border-radius: 10px;
+  text-transform: none;
+  width: 170px;
+  background-color: white;
+  margin-top: 10px;
+  right: 0px;
+  z-index: 1;
+}
+
+.dropdown li {
+    position: relative;
+    width: 100%;
+    left: -30px;
+}
+
+a {
+    text-decoration: none;
+    border: none !important;
+    color: rgb(0, 0, 0, 0.55);
+}
+
+li > a:hover {
+    color: rgb(0, 0, 0, 1);
+}

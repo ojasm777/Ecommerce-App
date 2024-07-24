@@ -1,0 +1,39 @@
+/* #exampleInputAnswer1::placeholder {
+  overflow: scroll;
+}
+#exampleInputAnswer1::placeholder::-webkit-scrollbar {
+  display: none;
+}
+
+#exampleInputAnswer1::placeholder {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+/* #exampleInputAnswer1{
+    height: 80px;
+    padding: 0;
+    text-align: center;
+}
+#exampleInputAnswer1::placeholder {
+    white-space: pre-line;
+    line-height: 1.2em;
+    padding-top: 0.3em;
+  } */
+textarea::placeholder::-webkit-scrollbar {
+  display: none;
+}
+
+textarea::placeholder {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+textarea {
+    resize: none;
+    border: none;
+    border-style: none;
+    border-radius: 0;
+    outline: none;
+    border-bottom: 1px solid #000;
+    background-color: white;
+}
