@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light gap-10">
         <Link to="/" className="navbar-brand">
           <MdShoppingCart></MdShoppingCart> Ecommerce App
         </Link>
@@ -53,8 +53,8 @@ const Header = () => {
         >
           <span className="navbar-toggler-icon" />
         </button> */}
-        <div className="collapse navbar-collapse" id="n_bar">
-          <ul className="navbar-nav ms-auto">
+        <div className="collapse navbar-collapse navbar-toggleable-xs" id="n_bar">
+          <ul className="navbar-nav ms-auto" style={{gap : "8px", marginRight: "10px"}} >
             <SearchInput />
             <li className="nav-item">
               <NavLink to="/" className="nav-link">
