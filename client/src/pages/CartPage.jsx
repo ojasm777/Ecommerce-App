@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import "../styles/cartStyles.css";
+
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
@@ -83,11 +85,13 @@ const CartPage = () => {
 
   return (
     <Layout title="Cart Page">
-      <div className="container">
+      <div className="container cart-page">
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
-              {`Hello ${auth?.token && auth?.user?.name}`}
+              {!auth.user
+                ? "Hello User"
+                : `Hello ${auth?.token && auth?.user?.name}`}
             </h1>
             <h4 className="text-center">
               {cart?.length > 0
@@ -101,9 +105,9 @@ const CartPage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-7 p-0 m-0">
             {cart?.map((curr) => (
-              <div className="row p-3 mb-2 card flex flex-row">
+              <div key={curr._id} className="row card flex flex-row">
                 <div className="col-md-4">
                   <img
                     src={`${
@@ -111,12 +115,16 @@ const CartPage = () => {
                     }/api/v1/product/product-photo/${curr._id}`}
                     className="card-img-top"
                     alt={curr.name}
+                    width="100%"
+                    height={"130px"}
                   />
                 </div>
                 <div className="col-md-4">
                   <p>{curr.name}</p>
                   <p>{curr.descreption.substring(0, 30)}</p>
                   <p>Price : {curr.price}</p>
+                </div>
+                <div className="col-md-4 cart-remove-btn">
                   <button
                     className="btn btn-danger"
                     onClick={() => removeCartItem(curr._id)}
@@ -127,7 +135,7 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-4 text-center">
+          <div className="col-md-5 cart-summary text-center">
             <h2>Cart Summary</h2>
             <p>Total | Checkout | Payment</p>
             <hr />

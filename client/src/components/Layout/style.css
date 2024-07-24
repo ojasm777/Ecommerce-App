@@ -72,10 +72,10 @@ a {
   color: rgb(0, 0, 0, 0.55);
 }
 
-button {
+/* button {
   border: none;
   background-color: transparent;
-}
+} */
 
 li > a:hover {
   color: rgb(0, 0, 0, 1);

@@ -6,6 +6,8 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../Context/Cart";
+import { AiOutlineReload } from "react-icons/ai";
+import "../styles/homePage.css";
 
 const HomePage = () => {
   const endPoint = `${import.meta.env.VITE_REACT_APP_API}/api/v1`;
@@ -119,8 +121,15 @@ const HomePage = () => {
   };
   return (
     <Layout title={"All Products - Best offers"}>
-      <div className="row mt-3">
-        <div className="col-md-2">
+      {/* Banner Image */}
+      <img
+        src="/images/banner.png"
+        className="banner-img"
+        alt="bannerimage"
+        width={"100%"}
+      />
+      <div className="container-fluid row mt-3 home-page">
+        <div className="col-md-3 filters">
           <h4 className="text-center">Filter by Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
@@ -172,33 +181,45 @@ const HomePage = () => {
                     alt={curr.name}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{curr.name}</h5>
+                    <div className="card-name-price">
+                      <h5 className="card-title">{curr.name}</h5>
+                      <h5 className="card-title card-price">
+                        {curr.price.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                      </h5>
+                    </div>
                     <p className="card-text">
-                      {curr.descreption.substring(0, 30)}...
+                      {curr.descreption.substring(0, 60)}
                     </p>
-                    <p className="card-text">${curr.price}</p>
-                    <button
-                      className="btn btn-primary ms-2"
-                      onClick={() => {
-                        navigate(`/product/${curr.slug}`);
-                      }}
-                    >
-                      More Details
-                    </button>
-                    <button
-                      className="btn btn-secondary ms-2"
-                      onClick={() => {
-                        if(!cart?.includes(curr)){
-                          setCart([...cart, curr]);
-                          localStorage.setItem('cart', JSON.stringify([...cart, curr]));
-                          toast.success("Item added to cart !");
-                        } else {
-                          toast.success("Item already in Cart");
-                        }
-                      }}
-                    >
-                      Add to Cart
-                    </button>
+                    <div className="card-name-price">
+                      <button
+                        className="btn btn-primary ms-2"
+                        onClick={() => {
+                          navigate(`/product/${curr.slug}`);
+                        }}
+                      >
+                        More Details
+                      </button>
+                      <button
+                        className="btn btn-secondary ms-2"
+                        onClick={() => {
+                          if (!cart?.includes(curr)) {
+                            setCart([...cart, curr]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, curr])
+                            );
+                            toast.success("Item added to cart !");
+                          } else {
+                            toast.success("Item already in Cart");
+                          }
+                        }}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
                   </div>
                 </div>
               </>

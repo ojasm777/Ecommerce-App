@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "../styles/productDetailsStyles.css";
+import { useCart } from "../Context/Cart";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
+  const [cart, setCart] = useCart();
   const params = useParams();
   const [product, setProduct] = useState({});
   const endPoint = `${import.meta.env.VITE_REACT_APP_API}/api/v1`;
@@ -38,8 +42,8 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row contianer mt-2">
-        <div className="col-md-5">
+      <div className="row contianer product-details">
+        <div className="col-md-6">
           <img
             src={`${
               import.meta.env.VITE_REACT_APP_API
@@ -48,23 +52,45 @@ const ProductDetails = () => {
             alt={product.name}
           />
         </div>
-        <div className="col-md-7">
-          <h2 className="text-center">Product Details</h2>
-          <h4>Name : {product.name}</h4>
-          <h4>Descreption : {product.descreption}</h4>
-          <h4>Price : {product.price}</h4>
-          <h4>Category : {product?.category?.name}</h4>
-          <button className="btn btn-secondary mt-3">Add to Cart</button>
+        <div className="col-md-6 product-details-info">
+          <h1 className="text-center">Product Details</h1>
+          <hr />
+          <h6>Name : {product.name}</h6>
+          <h6>Description : {product.description}</h6>
+          <h6>
+            Price :
+            {product?.price?.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </h6>
+          <h6>Category : {product?.category?.name}</h6>
+          <button
+            class="btn btn-secondary ms-1"
+            onClick={() => {
+              if (!cart?.includes(product)) {
+                setCart([...cart, product]);
+                localStorage.setItem("cart", JSON.stringify([...cart, product]));
+                toast.success("Item added to cart !");
+              } else {
+                toast.success("Item already in Cart");
+              }
+            }}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
       <hr />
-      <div className="row container">
-        <h6>Similar Products</h6>
-        {relatedProduct?.length < 1 && <p className="text-center">No Similar Products Found</p>}
+      <div className="row container similar-products">
+        <h4>Similar Products ➡️</h4>
+        {relatedProduct?.length < 1 && (
+          <p className="text-center">No Similar Products Found</p>
+        )}
         <div className="d-flex flex-wrap">
           {relatedProduct?.map((curr) => (
             <>
-              <div className="card m-2" style={{ width: "18rem" }}>
+              <div className="card m-2" key={curr} >
                 <img
                   src={`${
                     import.meta.env.VITE_REACT_APP_API
@@ -73,14 +99,27 @@ const ProductDetails = () => {
                   alt={curr.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{curr.name}</h5>
+                  <div className="card-name-price">
+                    <h5 className="card-title">{curr.name}</h5>
+                    <h5 className="card-title card-price">
+                      {curr.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                    </h5>
+                  </div>
                   <p className="card-text">
                     {curr.descreption.substring(0, 30)}...
                   </p>
-                  <p className="card-text">${curr.price}</p>
-                  <button className="btn btn-secondary ms-2">
-                    Add to Cart
+                  <button
+                    className="btn btn-info ms-1"
+                    onClick={() => navigate(`/product/${curr.slug}`)}
+                  >
+                    More Details
                   </button>
+                  {/* <button className="btn btn-secondary ms-2">
+                    Add to Cart
+                  </button> */}
                 </div>
               </div>
             </>
