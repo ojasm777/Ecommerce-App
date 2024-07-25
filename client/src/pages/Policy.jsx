@@ -7,7 +7,7 @@ const Policy = () => {
       <div className="row contactus" style={{ margin: "30px" }}>
         <div className="col-md-6 ">
           <img
-            src="../../public/images/contactus.jpeg"
+            src="/images/contactus.jpeg"
             alt="contactus"
             style={{ width: "100%" }}
           />
@@ -22,7 +22,7 @@ const Policy = () => {
           <p>Vero officiis reprehenderit animi non illum.</p>
           <p>Possimus atque reprehenderit consequatur commodi cupiditate.</p>
           <p>Numquam laudantium a rerum nisi cum.</p>
-          <p>Error at dolorem iusto assumenda molestiae.</p> 
+          <p>Error at dolorem iusto assumenda molestiae.</p>
         </div>
       </div>
     </Layout>
