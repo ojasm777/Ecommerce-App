@@ -105,7 +105,7 @@ const CartPage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-7 p-0 m-0">
+          <div className="col-md-7">
             {cart?.map((curr) => (
               <div key={curr._id} className="row card flex flex-row">
                 <div className="col-md-4">
@@ -121,7 +121,7 @@ const CartPage = () => {
                 </div>
                 <div className="col-md-4">
                   <p>{curr.name}</p>
-                  <p>{curr.descreption.substring(0, 30)}</p>
+                  <p>{curr.description.substring(0, 30)}</p>
                   <p>Price : {curr.price}</p>
                 </div>
                 <div className="col-md-4 cart-remove-btn">

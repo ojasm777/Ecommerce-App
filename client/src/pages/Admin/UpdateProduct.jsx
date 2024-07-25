@@ -5,7 +5,7 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 // After backend
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Select } from "antd"; 
+import { Select } from "antd";
 import {useNavigate, useParams} from "react-router-dom";
 const { Option } = Select;
 
@@ -18,7 +18,7 @@ const UpdateProduct = () => {
     const [category, setCategory] = useState("");
     const [photo, setPhoto] = useState("");
     const [name, setName] = useState("");
-    const [descreption, setDescreption] = useState("");
+    const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [shipping, setShipping] = useState("");
@@ -32,7 +32,7 @@ const UpdateProduct = () => {
             setCategory(data.product.category._id);
             setName(data.product.name);
             setId(data.product._id);
-            setDescreption(data.product.descreption);
+            setDescription(data.product.description);
             setPrice(data.product.price);
             setQuantity(data.product.quantity);
 
@@ -72,7 +72,7 @@ const UpdateProduct = () => {
         // We get formData in browser by default
         const productData = new FormData();
         productData.append("name", name);
-        productData.append("descreption", descreption);
+        productData.append("description", description);
         productData.append("price", price);
         productData.append("quantity",quantity);
         photo && productData.append("photo", photo);
@@ -182,10 +182,10 @@ const UpdateProduct = () => {
                   <div className="mb-3">
                     <textarea
                       type="text"
-                      value={descreption}
-                      placeholder="Write descreption of the product"
+                      value={description}
+                      placeholder="Write description of the product"
                       className="form-control"
-                      onChange={(e) => setDescreption(e.target.value)}
+                      onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">

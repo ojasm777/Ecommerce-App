@@ -48,9 +48,9 @@ const Products = () => {
               <Link key={curr._id} to={`/dashboard/admin/product/${curr.slug}`} className='product-link'>
                   <div className="card m-2" style={{width: '18rem'}}>
                     <img src={`${import.meta.env.VITE_REACT_APP_API}/api/v1/product/product-photo/${curr._id}`} className="card-img-top" alt={curr.name} />
-                    <div className="card-body">
+                    <div className="card-body" style={{textDecoration : "NONE"}}>
                       <h5 className="card-title">{curr.name}</h5>
-                      <p className="card-text">{curr.descreption}</p>
+                      <p className="card-text">{curr.description}</p>
                     </div>
                   </div>
               </Link>

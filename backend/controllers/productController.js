@@ -22,7 +22,7 @@ var gateway = new braintree.BraintreeGateway({
 
 export const createProductController = async (req, res) => {
   try {
-    const { name, slug, descreption, price, category, quantity, shipping } =
+    const { name, slug, description, price, category, quantity, shipping } =
       req.fields; // this is because of express-formidable
     const { photo } = req.files; // again because of express-formidable
 
@@ -30,8 +30,8 @@ export const createProductController = async (req, res) => {
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is required" });
-      case !descreption:
-        return res.status(500).send({ error: "Descreption is required" });
+      case !description:
+        return res.status(500).send({ error: "Description is required" });
       case !price:
         return res.status(500).send({ error: "Price is required" });
       case !category:
@@ -66,7 +66,7 @@ export const createProductController = async (req, res) => {
 
 export const updateProductController = async (req, res) => {
   try {
-    const { name, descreption, price, category, quantity, shipping } =
+    const { name, description, price, category, quantity, shipping } =
       req.fields; // this is because of express-formidable
     const { photo } = req.files; // again because of express-formidable
 
@@ -74,8 +74,8 @@ export const updateProductController = async (req, res) => {
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is required" });
-      case !descreption:
-        return res.status(500).send({ error: "Descreption is required" });
+      case !description:
+        return res.status(500).send({ error: "Description is required" });
       case !price:
         return res.status(500).send({ error: "Price is required" });
       case !category:
@@ -273,7 +273,7 @@ export const searchProductController = async (req, res) => {
       .find({
         $or: [
           { name: { $regex: keyword, $options: "i" } },
-          { descreption: { $regex: keyword, $options: "i" } },
+          { description: { $regex: keyword, $options: "i" } },
         ],
       })
       .select("-photo");

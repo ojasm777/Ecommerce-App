@@ -49,7 +49,7 @@ const CategoryProduct = () => {
                     </h5>
                   </div>
                   <p className="card-text">
-                    {curr.descreption.substring(0, 30)}...
+                    {curr.description.substring(0, 30)}...
                   </p>
                   <button
                     className="btn btn-info ms-1"

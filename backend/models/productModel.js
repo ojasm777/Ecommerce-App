@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    descreption : {
+    description : {
         type : String,
         required : true
     },

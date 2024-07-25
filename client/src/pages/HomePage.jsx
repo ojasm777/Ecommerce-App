@@ -6,7 +6,6 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../Context/Cart";
-import { AiOutlineReload } from "react-icons/ai";
 import "../styles/homePage.css";
 
 const HomePage = () => {
@@ -114,7 +113,7 @@ const HomePage = () => {
       const { data } = await axios.get(
         `${endPoint}/product/product-list/${page}`
       );
-      setProducts([...products, ...data.products]);
+      setProducts([...products, ...data?.products]);
     } catch (error) {
       console.log("Error in loading more products : ", error);
     }
@@ -131,16 +130,15 @@ const HomePage = () => {
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter by Category</h4>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column" style={{marginLeft: "11px"}}>
             {categories?.map((c) => (
-              <>
                 <Checkbox
                   key={c._id}
                   onChange={(e) => handleFilter(e.target.checked, c._id)}
+                  style={{marginLeft: "0px"}}
                 >
                   {c.name}
                 </Checkbox>
-              </>
             ))}
           </div>
           {/* Price Filter */}
@@ -149,11 +147,9 @@ const HomePage = () => {
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => {
                 return (
-                  <>
                     <div key={p._id}>
                       <Radio value={p.array}>{p.name}</Radio>
                     </div>
-                  </>
                 );
               })}
             </Radio.Group>
@@ -191,7 +187,7 @@ const HomePage = () => {
                       </h5>
                     </div>
                     <p className="card-text">
-                      {curr.descreption.substring(0, 60)}
+                      {curr.description.substring(0, 60)}
                     </p>
                     <div className="card-name-price">
                       <button
@@ -227,11 +223,9 @@ const HomePage = () => {
           </div>
           <div className="m-2 p-3 text-center">
             {products && products.length < total && (
-              <>
                 <button
                   className="btn btn-warning"
-                  // added after bug
-                  hidden={products.length == total}
+                  // added after bug 
                   onClick={(e) => {
                     e.preventDefault();
                     setPage(page + 1);
@@ -239,7 +233,6 @@ const HomePage = () => {
                 >
                   {loading ? "Loading..." : "Load More"}
                 </button>
-              </>
             )}
           </div>
         </div>

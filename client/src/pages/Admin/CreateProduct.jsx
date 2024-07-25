@@ -5,7 +5,7 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 // After backend
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Select } from "antd"; 
+import { Select } from "antd";
 import {useNavigate} from "react-router-dom";
 const { Option } = Select;
 const CreateProduct = () => {
@@ -16,7 +16,7 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [photo, setPhoto] = useState("");
   const [name, setName] = useState("");
-  const [descreption, setDescreption] = useState("");
+  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
@@ -47,7 +47,7 @@ const CreateProduct = () => {
       // We get formData in browser by default
       const productData = new FormData();
       productData.append("name", name);
-      productData.append("descreption", descreption);
+      productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity",quantity);
       productData.append("photo", photo);
@@ -129,10 +129,10 @@ const CreateProduct = () => {
                   <div className="mb-3">
                     <textarea
                       type="text"
-                      value={descreption}
-                      placeholder="Write descreption of the product"
+                      value={description}
+                      placeholder="Write description of the product"
                       className="form-control"
-                      onChange={(e) => setDescreption(e.target.value)}
+                      onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">

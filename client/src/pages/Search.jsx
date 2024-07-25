@@ -29,7 +29,7 @@ const Search = () => {
                   <div className="card-body">
                     <h5 className="card-title">{curr.name}</h5>
                     <p className="card-text">
-                      {curr.descreption.substring(0, 30)}...
+                      {curr.description.substring(0, 30)}...
                     </p>
                     <p className="card-text">${curr.price}</p>
                     <button className="btn btn-primary ms-2">
