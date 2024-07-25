@@ -24,7 +24,7 @@ const HomePage = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(`${endPoint}/category/get-category`);
-      console.log(data?.category);
+      // console.log(data?.category);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -49,6 +49,7 @@ const HomePage = () => {
       setLoading(false);
       if (data?.success) {
         setProducts(data?.products);
+        setTotal(data?.products?.length);
       } else {
         toast.error("Error in getting products");
       }
@@ -85,6 +86,7 @@ const HomePage = () => {
         radio,
       });
       setProducts(data?.products);
+      setTotal(data?.products?.length);
     } catch (error) {
       console.log("Error in filtering product : ", error);
       toast.error("Error in filtering product");
@@ -114,6 +116,7 @@ const HomePage = () => {
         `${endPoint}/product/product-list/${page}`
       );
       setProducts([...products, ...data?.products]);
+      setTotal([...products, ...data?.products].length);
     } catch (error) {
       console.log("Error in loading more products : ", error);
     }
@@ -225,7 +228,8 @@ const HomePage = () => {
             {products && products.length < total && (
                 <button
                   className="btn btn-warning"
-                  // added after bug 
+                  // added after bug
+                  hidden={products.length == total}
                   onClick={(e) => {
                     e.preventDefault();
                     setPage(page + 1);

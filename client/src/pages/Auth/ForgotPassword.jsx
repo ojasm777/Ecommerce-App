@@ -18,7 +18,7 @@ const ForgotPassword = () => {
       const str = `${
         import.meta.env.VITE_REACT_APP_API
       }/api/v1/auth/forgot-password`;
-      console.log(str);
+      // console.log(str);
       const response = await axios.post(str, {
         email,
         answer,

@@ -20,7 +20,7 @@ const Register = () => {
     try {
       // This is how you use .env variables in vite react
       const str = `${import.meta.env.VITE_REACT_APP_API}/api/v1/auth/register`;
-      console.log(str);
+      // console.log(str);
       const response = await axios.post(str, {
         name,
         email,

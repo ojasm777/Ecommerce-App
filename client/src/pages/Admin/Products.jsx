@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 
 const Products = () => {
   const endPoint = `${import.meta.env.VITE_REACT_APP_API}/api/v1/product`;
-  console.log(endPoint);
+  // console.log(endPoint);
   const [products, setProducts] = useState([]);
   const [photo, setPhoto] = useState("");
   // get all products
   const getAllProducts = async () => {
     try {
       const {data} = await axios.get(`${endPoint}/get-product`);
-      console.log(data.products);
+      // console.log(data.products);
       if(data?.success) {
         setProducts(data?.products);
       } else {

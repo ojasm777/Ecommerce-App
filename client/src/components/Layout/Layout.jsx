@@ -7,12 +7,12 @@ import {Helmet} from 'react-helmet';
 import { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Layout = ({ children, title = "Ecommerce App", descreption = "Ecommerce", keyword = "Ecommerce, shop, online shopping", author = "Ojas Malhotra" }) => {
+const Layout = ({ children, title = "Ecommerce App", description = "Ecommerce", keyword = "Ecommerce, shop, online shopping", author = "Ojas Malhotra" }) => {
   return (
     <div>
       <Helmet>
           <meta charSet="utf-8" />
-          <meta name = "descreption" content={descreption}/>
+          <meta name = "description" content={description}/>
           <meta name = "keyword" content={keyword}/>
           <meta name = "author" content={author}/>
           <title>{title}</title>

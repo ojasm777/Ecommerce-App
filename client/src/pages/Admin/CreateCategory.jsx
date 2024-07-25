@@ -45,7 +45,7 @@ const CreateCategory = () => {
         `${endPoint}/update-category/${selected._id}`,
         { name: updatedName }
       );
-      console.log(selected._id);
+      // console.log(selected._id);
       if (data?.success) {
         // toast.success(`Name updated to ${updatedName}`);
         toast.success(`Name updated to ${updatedName}`);
@@ -70,7 +70,7 @@ const CreateCategory = () => {
       });
       if (data?.success) {
         toast.success(`${name} is created`);
-        console.log(e.value);
+        // console.log(e.value);
         setName("");
         getAllCategories();
       } else {
@@ -86,7 +86,7 @@ const CreateCategory = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(`${endPoint}/get-category`);
-      console.log(data?.category);
+      // console.log(data?.category);
       if (data?.success) {
         setCategories(data?.category);
       }
